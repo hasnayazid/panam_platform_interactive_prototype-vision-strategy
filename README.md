@@ -1,0 +1,2 @@
+# panam_platform_interactive_prototype-vision-strategy
+panam_platform_interactive_prototype-vision strategy
