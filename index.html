@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANAM Sports — Commercial CRM & Analytics | Product Vision & Alignment Concept</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            /* Bornan Brand Palette derived from official branding & signage */
+            --bornan-obsidian: #0f1324;       /* Deep midnight charcoal-indigo from Bornan signage */
+            --bornan-indigo: #262d5e;         /* Deep sports indigo from Official Sports Partner banner */
+            --bornan-plum: #552471;           /* Rich royal violet-plum */
+            --bornan-magenta: #7f1b77;        /* Vibrant stadium magenta-purple */
+            --bornan-chartreuse: #8f9e48;     /* Signature Bornan warm lime-olive gradient accent */
+            --bornan-chartreuse-soft: #eef2d8;
+            --bornan-lilac: #c5b2de;          /* Soft lavender-lilac highlight */
+            --bornan-plum-soft: #f5effa;
+            --bornan-indigo-soft: #eef1fa;
+            --bornan-emerald: #15803d;        /* Compliant / verified status indicator */
+            --bornan-emerald-soft: #dcfce7;
+
+            /* Cohesive Light Canvas & Surface System */
+            --canvas-bg: #f6f5fa;             /* Subtle cool lilac-tinted neutral canvas */
+            --surface-card: #ffffff;
+            --surface-tint: #faf8fc;
+            --ink-primary: #141729;           /* High-contrast midnight ink */
+            --ink-secondary: #4e556e;         /* Readable slate-plum secondary text */
+            --hairline: #e3dfed;              /* Cohesive soft violet-grey border */
+            --rail-border: rgba(255, 255, 255, 0.09);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background:
+                radial-gradient(circle at 88% 4%, rgba(127, 27, 119, 0.08), transparent 42%),
+                radial-gradient(circle at 12% 94%, rgba(143, 158, 72, 0.10), transparent 45%),
+                var(--canvas-bg);
+            color: var(--ink-primary);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, .kpi-val, .brand-main, .big-num, .pipe-name, .card-title {
+            letter-spacing: -0.015em;
+        }
+
+        .kpi-val, .big-num {
+            font-family: 'Barlow Condensed', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+        }
+
+        /* Floating Beginner Tooltip */
+        #smart-tooltip {
+            position: fixed;
+            z-index: 9999;
+            max-width: 355px;
+            background: linear-gradient(155deg, #141729 0%, #262d5e 65%, #471c63 100%);
+            color: #ffffff;
+            padding: 15px 17px;
+            border-radius: 12px;
+            box-shadow: 0 20px 45px rgba(20, 23, 41, 0.45), 0 0 0 1px rgba(255,255,255,0.12);
+            border-left: 4px solid var(--bornan-chartreuse);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.14s ease, transform 0.14s ease;
+            font-size: 0.85rem;
+            line-height: 1.52;
+        }
+        #smart-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #smart-tooltip .tt-badge {
+            display: inline-block;
+            font-size: 0.66rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: #d8c8f0;
+            margin-bottom: 4px;
+        }
+        #smart-tooltip .tt-title {
+            font-weight: 800;
+            font-size: 0.96rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        #smart-tooltip .tt-body {
+            color: #e2e8f0;
+        }
+        #smart-tooltip .tt-why {
+            margin-top: 8px;
+            padding-top: 7px;
+            border-top: 1px solid rgba(255,255,255,0.14);
+            font-size: 0.78rem;
+            color: #e5ee9c;
+        }
+
+        [data-explain] {
+            cursor: help;
+            transition: outline 0.15s ease, transform 0.16s ease, box-shadow 0.16s ease;
+        }
+        [data-explain]:hover {
+            outline: 2px dashed rgba(127, 27, 119, 0.55);
+            outline-offset: 2px;
+        }
+
+        /* Sidebar - Bornan Signature Gradient Rail */
+        .sidebar {
+            width: 278px;
+            background:
+                linear-gradient(165deg, #262d5e 0%, #552471 46%, #141729 88%, #0f1324 100%);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            padding: 24px 16px;
+            border-right: 1px solid var(--rail-border);
+            position: relative;
+        }
+        .sidebar::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--bornan-lilac), var(--bornan-magenta), var(--bornan-chartreuse));
+        }
+
+        .brand {
+            padding: 8px 12px 20px;
+            border-bottom: 1px solid var(--rail-border);
+            margin-bottom: 18px;
+        }
+        .brand-top {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            color: #d8e28b;
+            text-transform: uppercase;
+        }
+        .brand-main {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-top: 4px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+        .brand-sub {
+            font-size: 0.77rem;
+            color: #d8d2e6;
+            margin-top: 6px;
+            line-height: 1.45;
+        }
+        .brand-sub strong { color: #ffffff; }
+
+        .nav-label {
+            font-size: 0.66rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #b7aed0;
+            padding: 10px 12px 6px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 13px;
+            border-radius: 9px;
+            color: #ede9f5;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.16s ease;
+            border: 1px solid transparent;
+        }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateX(2px);
+        }
+        .nav-item.active {
+            background: linear-gradient(135deg, #7f1b77 0%, #552471 65%, #7e8d39 145%);
+            color: #fff;
+            border-color: rgba(216, 226, 139, 0.35);
+            box-shadow: 0 8px 22px rgba(127, 27, 119, 0.38);
+        }
+        .nav-pill {
+            font-size: 0.64rem;
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            font-size: 0.77rem;
+            color: #d8d2e6;
+            background: rgba(15, 19, 36, 0.55);
+            border: 1px solid var(--rail-border);
+            padding: 12px;
+            border-radius: 10px;
+        }
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #b7c957;
+            box-shadow: 0 0 8px #b7c957;
+            margin-right: 6px;
+        }
+
+        /* Main Area */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .topbar {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--hairline);
+            padding: 18px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .topbar-title h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--bornan-indigo);
+            line-height: 1.05;
+        }
+        .topbar-title p {
+            font-size: 0.82rem;
+            color: var(--ink-secondary);
+            margin-top: 3px;
+        }
+        .topbar-badges {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(38, 45, 94, 0.05);
+        }
+        .badge-green {
+            background: var(--bornan-chartreuse-soft);
+            color: #424d13;
+            border: 1px solid #cbd788;
+        }
+        .badge-blue {
+            background: var(--bornan-indigo-soft);
+            color: var(--bornan-indigo);
+            border: 1px solid #c7d2f0;
+        }
+        .badge-amber {
+            background: var(--bornan-plum-soft);
+            color: var(--bornan-plum);
+            border: 1px solid #dcc8ed;
+        }
+
+        .helper-banner {
+            background: linear-gradient(90deg, #141729 0%, #262d5e 48%, #552471 82%, #596524 100%);
+            color: #f8fafc;
+            padding: 10px 28px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .helper-banner span strong { color: #e2ee8f; }
+
+        .content {
+            padding: 24px 28px 36px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        /* Tab Panels */
+        .tab-panel { display: none; animation: fadeIn 0.22s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 4-Stage Pipeline */
+        .pipeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+        .pipe-step {
+            background: var(--surface-card);
+            border: 1px solid var(--hairline);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(38, 45, 94, 0.05);
+        }
+        .pipe-step::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--bornan-indigo);
+        }
+        .pipe-step.s2::before { background: var(--bornan-plum); }
+        .pipe-step.s3::before { background: var(--bornan-magenta); }
+        .pipe-step.s4::before { background: linear-gradient(90deg, var(--bornan-magenta), var(--bornan-chartreuse)); }
+
+        .pipe-num {
+            font-size: 0.68rem;
+            font-weight: 800;
+            color: var(--bornan-magenta);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .pipe-name {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: var(--ink-primary);
+            margin: 4px 0;
+        }
+        .pipe-desc {
+            font-size: 0.8rem;
+            color: var(--ink-secondary);
+            line-height: 1.45;
+        }
+
+        /* Scoreboard KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+        .kpi-card {
+            background: linear-gradient(180deg, #ffffff 0%, var(--surface-tint) 100%);
+            border: 1px solid var(--hairline);
+            border-radius: 12px;
+            padding: 18px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(38, 45, 94, 0.05);
+        }
+        .kpi-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--bornan-plum);
+        }
+        .kpi-card.navy::after { background: var(--bornan-indigo); }
+        .kpi-card.green::after { background: var(--bornan-chartreuse); }
+        .kpi-card.red::after { background: var(--bornan-magenta); }
+
+        .kpi-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--ink-secondary);
+            letter-spacing: 0.06em;
+        }
+        .kpi-val {
+            font-size: 2.25rem;
+            line-height: 1.05;
+            color: var(--bornan-indigo);
+            margin: 8px 0 5px;
+        }
+        .kpi-sub {
+            font-size: 0.79rem;
+            color: var(--ink-secondary);
+        }
+
+        /* Grid layouts */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1.55fr 1fr;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+        .card {
+            background: var(--surface-card);
+            border: 1px solid var(--hairline);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 28px rgba(38, 45, 94, 0.055);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--hairline);
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--ink-primary);
+        }
+        .card-sub {
+            font-size: 0.8rem;
+            color: var(--ink-secondary);
+            margin-top: 2px;
+        }
+
+        /* Cohesive Bornan Bar Chart */
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.86rem;
+        }
+        .bar-label { width: 124px; font-weight: 700; color: var(--ink-primary); }
+        .bar-track {
+            flex: 1;
+            height: 20px;
+            background: #ece8f5;
+            border-radius: 999px;
+            overflow: hidden;
+            display: flex;
+            padding: 2px;
+            gap: 2px;
+        }
+        .bar-fill-ath {
+            background: linear-gradient(90deg, #262d5e, #552471);
+            height: 100%;
+            border-radius: 999px;
+        }
+        .bar-fill-off {
+            background: linear-gradient(90deg, #7f1b77, #a855f7);
+            height: 100%;
+            border-radius: 999px;
+        }
+        .bar-fill-med {
+            background: linear-gradient(90deg, #7e8d39, #a6b74b);
+            height: 100%;
+            border-radius: 999px;
+        }
+        .bar-num {
+            width: 72px;
+            text-align: right;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--ink-primary);
+        }
+
+        .legend {
+            display: flex;
+            gap: 18px;
+            font-size: 0.78rem;
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--hairline);
+            color: var(--ink-secondary);
+            flex-wrap: wrap;
+        }
+        .legend-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        /* Form Controls & Buttons */
+        .form-group { margin-bottom: 13px; }
+        .form-group label {
+            display: block;
+            font-size: 0.73rem;
+            font-weight: 800;
+            color: var(--bornan-indigo);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cfc9de;
+            border-radius: 8px;
+            font-size: 0.87rem;
+            font-family: inherit;
+            background: #fff;
+            color: var(--ink-primary);
+        }
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--bornan-plum);
+            box-shadow: 0 0 0 3px rgba(85, 36, 113, 0.14);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 11px 15px;
+            border-radius: 9px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.14s ease, box-shadow 0.14s ease, opacity 0.14s ease;
+        }
+        .btn:hover { transform: translateY(-1px); opacity: 0.96; }
+        .btn-red {
+            background: linear-gradient(135deg, #7f1b77 0%, #552471 100%);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(127, 27, 119, 0.28);
+        }
+        .btn-blue {
+            background: linear-gradient(135deg, #262d5e 0%, #3d3b8e 100%);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(38, 45, 94, 0.24);
+        }
+        .btn-navy {
+            background: linear-gradient(135deg, #141729 0%, #262d5e 100%);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(20, 23, 41, 0.24);
+        }
+
+        .cohort-result {
+            background: linear-gradient(135deg, #f5effa 0%, #eef1fa 55%, #f4f7e4 100%);
+            border: 1px solid #d5c9e8;
+            border-left: 4px solid var(--bornan-magenta);
+            border-radius: 10px;
+            padding: 15px 16px;
+            margin: 14px 0;
+        }
+        .cohort-result .big-num {
+            font-size: 2.05rem;
+            line-height: 1.05;
+            color: var(--bornan-indigo);
+            margin-top: 2px;
+        }
+
+        /* Data Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            background: linear-gradient(90deg, #141729 0%, #262d5e 75%, #471c63 100%);
+            color: #fff;
+            text-align: left;
+            padding: 11px 13px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        th:first-child { border-top-left-radius: 8px; }
+        th:last-child { border-top-right-radius: 8px; }
+        td {
+            padding: 11px 13px;
+            border-bottom: 1px solid var(--hairline);
+        }
+        tr:nth-child(even) td { background: var(--surface-tint); }
+
+        .pill {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.71rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+        .pill-ok { background: var(--bornan-chartreuse-soft); color: #3e4911; }
+        .pill-blocked { background: #f8e3f6; color: #701468; }
+        .pill-sync { background: var(--bornan-indigo-soft); color: var(--bornan-indigo); }
+
+        /* Toast notification */
+        #toast {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: #141729;
+            color: #fff;
+            padding: 13px 18px;
+            border-radius: 10px;
+            border-left: 4px solid var(--bornan-chartreuse);
+            font-size: 0.84rem;
+            box-shadow: 0 14px 32px rgba(20, 23, 41, 0.35);
+            display: none;
+            z-index: 9998;
+        }
+
+        @media (max-width: 960px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .kpi-grid, .two-col, .pipeline { grid-template-columns: 1fr; }
+        }
+    
+        /* Interactive Regional Map & Multi-Graph Telemetry */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+        .map-stage {
+            background: linear-gradient(160deg, #0f1324 0%, #1c2246 58%, #2d1847 100%);
+            border: 1px solid rgba(197, 178, 222, 0.24);
+            border-radius: 12px;
+            padding: 16px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .map-chip-group {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .map-chip {
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.06);
+            color: #e2def0;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .map-chip:hover {
+            background: rgba(255,255,255,0.14);
+            color: #ffffff;
+        }
+        .map-chip.active {
+            background: linear-gradient(135deg, #7f1b77 0%, #8f9e48 150%);
+            border-color: #d8e28b;
+            color: #ffffff;
+        }
+        .map-layout {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 14px;
+            align-items: center;
+        }
+        .americas-svg {
+            width: 100%;
+            height: 270px;
+            display: block;
+        }
+        .hub-node {
+            cursor: pointer;
+            transition: transform 0.16s ease;
+        }
+        .hub-node:hover circle.hub-core {
+            stroke: #e2ee8f;
+            stroke-width: 3;
+        }
+        .hub-node.selected circle.hub-pulse {
+            stroke: #e2ee8f;
+            stroke-width: 2;
+            opacity: 0.95;
+        }
+        .region-inspector {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .region-inspector-tag {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: #d8e28b;
+        }
+        .region-inspector-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin: 2px 0 8px;
+        }
+        .mini-kpi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .mini-kpi {
+            background: rgba(15, 19, 36, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 9px 10px;
+        }
+        .mini-kpi .mk-label {
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #c5b2de;
+            font-weight: 700;
+        }
+        .mini-kpi .mk-val {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 2px;
+        }
+
+        /* SVG Growth & Consent Graphs */
+        .graph-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .graph-box {
+            background: var(--surface-tint);
+            border: 1px solid var(--hairline);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+        .graph-box-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .graph-box-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--bornan-indigo);
+        }
+        .graph-box-meta {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--bornan-plum);
+        }
+        .trend-svg {
+            width: 100%;
+            height: 112px;
+            display: block;
+        }
+        .consent-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin-top: 6px;
+        }
+        .c-row {
+            display: grid;
+            grid-template-columns: 118px 1fr 48px;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.79rem;
+        }
+        .c-name { font-weight: 700; color: var(--ink-primary); }
+        .c-track {
+            height: 11px;
+            background: #e7e2f2;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .c-fill-1 { height: 100%; background: linear-gradient(90deg, #262d5e, #552471); border-radius: 999px; }
+        .c-fill-2 { height: 100%; background: linear-gradient(90deg, #7f1b77, #a855f7); border-radius: 999px; }
+        .c-fill-3 { height: 100%; background: linear-gradient(90deg, #7e8d39, #a6b74b); border-radius: 999px; }
+        .c-pct { text-align: right; font-weight: 800; color: var(--bornan-indigo); }
+
+        @media (max-width: 1100px) {
+            .analytics-grid, .map-layout { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Floating Beginner Explanation Tooltip -->
+<div id="smart-tooltip">
+    <div class="tt-badge" id="tt-category">PLATFORM COMPONENT</div>
+    <div class="tt-title" id="tt-title">Hover over anything</div>
+    <div class="tt-body" id="tt-body">Move your cursor over any button, chart, number, or menu item to get a plain-English explanation of what it is and why it matters.</div>
+    <div class="tt-why" id="tt-why"></div>
+</div>
+
+<!-- Toast Feedback -->
+<div id="toast"></div>
+
+<!-- LEFT NAVIGATION SIDEBAR -->
+<aside class="sidebar"
+    data-explain="Left Navigation Sidebar"
+    data-category="APP NAVIGATION"
+    data-why="Lets PANAM staff, sponsors, and Bornan admins switch between all 5 modules of the platform."
+    data-desc="This is the main menu of the platform. Each tab represents one building block of Bornan's system—from raw event data cleanup to analytics, login security, and sponsor campaigns.">
+    <div class="brand"
+        data-explain="Bornan + PANAM Sports Platform"
+        data-category="SYSTEM IDENTITY"
+        data-why="Shows that Bornan owns 100% of this software and custom-branded it for PANAM Sports."
+        data-desc="Bornan builds sports games software (GMS). Normally, after a tournament ends, the contact data sits unused in separate files. This platform turns that data into a permanent year-round hub for PANAM Sports.">
+        <div class="brand-top">BORNAN SPORTS TECH</div>
+        <div class="brand-main">PANAM CRM &amp; BI</div>
+        <div class="brand-sub">Product Vision &amp; Alignment Concept<br><strong>Hasna Yazid</strong> · Senior Product Owner</div>
+    </div>
+
+    <div class="nav-label">PRE-SALE POC MODULES</div>
+    <div class="nav-item active" onclick="switchTab('cockpit', this)"
+        data-explain="Module B: Custom BI & Sponsor Cockpit"
+        data-category="WEEK 4 SALES DEMO"
+        data-why="This is the 'wow' screen shown to PANAM executives in Week 4 to win the contract."
+        data-desc="BI stands for 'Business Intelligence'—visual charts and filters that turn raw lists of people into easy-to-read insights (like how many athletes came from Brazil or Mexico across multiple Games).">
+        <span>1. BI &amp; Sponsor Cockpit</span>
+        <span class="nav-pill">MOD B</span>
+    </div>
+
+    <div class="nav-item" onclick="switchTab('golden', this)"
+        data-explain="Module A: Golden Records & PII Firewall"
+        data-category="FOUNDATION · SPRINT 1"
+        data-why="Without clean, merged records, marketing and analytics would count the same person twice."
+        data-desc="A 'Golden Record' is one single, clean profile for a person even if they attended 3 different Games. The 'PII Firewall' automatically blocks sensitive passport numbers so there is zero legal risk.">
+        <span>2. Golden Records &amp; ETL</span>
+        <span class="nav-pill">MOD A</span>
+    </div>
+
+    <div class="nav-item" onclick="switchTab('keycloak', this)"
+        data-explain="Module C: Keycloak SSO & Consent Vault"
+        data-category="RETENTION · SPRINT 3"
+        data-why="Saves National Olympic Committees hours of typing and makes sponsor emails 100% legal."
+        data-desc="Keycloak is a secure login system (Single Sign-On). Returning athletes log in once, confirm their saved info for the next Games, and tick boxes saying whether sponsors are allowed to email them.">
+        <span>3. Keycloak SSO &amp; Consent</span>
+        <span class="nav-pill">MOD C</span>
+    </div>
+
+    <div class="nav-item" onclick="switchTab('activation', this)"
+        data-explain="Module D: Sponsor Portal & Dynamics 365 Sync"
+        data-category="MONETIZATION · SPRINT 4"
+        data-why="This is how PANAM and Bornan make money by letting sponsors run safe, targeted campaigns."
+        data-desc="Connects the clean audience lists to sponsor campaigns and external enterprise CRMs like Microsoft Dynamics 365—while hiding private emails from sponsors so privacy is protected.">
+        <span>4. Activation &amp; D365 Sync</span>
+        <span class="nav-pill">MOD D</span>
+    </div>
+
+    <div class="nav-label" style="margin-top:12px;">POST-SALE SCALE-UP</div>
+    <div class="nav-item" onclick="switchTab('module-e', this)"
+        data-explain="Module E: Multi-Tenant White-Label & Metering Engine"
+        data-category="POST-SALE SCALE-UP · MOD E"
+        data-why="Shows how Bornan scales PANAM's platform into a multi-federation product for OCA and FISU with EN/ES/FR support and usage metering."
+        data-desc="Interactive post-sale console where you can switch between federations (PANAM, OCA, FISU), preview English/Spanish/French localization, and inspect SaaS metering & tenant isolation.">
+        <span>5. Module E: Scale &amp; Metering</span>
+        <span class="nav-pill">MOD E</span>
+    </div>
+    <div class="nav-item" onclick="switchTab('monetization', this)"
+        data-explain="8-Week Roadmap & 4 Revenue Streams"
+        data-category="EXECUTIVE & PO VIEW"
+        data-why="Explains how a 1–2 developer pilot turns into recurring SaaS revenue across OCA and FISU."
+        data-desc="Shows the 8-week stage-gated build plan and the 4 ways Bornan monetizes this platform.">
+        <span>6. Roadmap &amp; Revenue</span>
+        <span class="nav-pill">BIZ</span>
+    </div>
+
+    <div class="sidebar-footer"
+        data-explain="Live GMS Isolation Status"
+        data-category="SAFETY GUARDRAIL"
+        data-why="Guarantees to technical teams that live tournament operations can never be broken by this platform."
+        data-desc="GMS (Games Management System) is Bornan's live tournament database. This indicator confirms we only read closed historical copies—we never touch live event operations.">
+        <div><span class="status-dot"></span><strong>GMS Live DB:</strong> Untouched</div>
+        <div style="margin-top:4px;"><strong>Identity:</strong> Keycloak OIDC Active</div>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT AREA -->
+<div class="main">
+    <!-- Top Header -->
+    <header class="topbar">
+        <div class="topbar-title"
+            data-explain="Platform Header & Context"
+            data-category="OVERVIEW"
+            data-why="Gives executives instant clarity on what this system does."
+            data-desc="You are looking at an interactive prototype of Bornan's all-in-one Post-Event Data & Commercial CRM platform built for PANAM Sports.">
+            <h1>PANAM Sports — Commercial CRM &amp; Analytics</h1>
+            <p><strong>Product Vision &amp; Alignment Concept</strong> · Led by <strong>Hasna Yazid</strong>, Senior Product Owner (Bornan) · Hover any element for a plain-English guide</p>
+        </div>
+        <div class="topbar-badges">
+            <span class="badge badge-green"
+                data-explain="PII Privacy Firewall Active"
+                data-category="DATA SECURITY"
+                data-why="Protects PANAM and Bornan from data privacy fines."
+                data-desc="PII stands for 'Personally Identifiable Information' like passport numbers or travel IDs. Our firewall strips those sensitive fields out automatically when importing historical Games data.">
+                🛡️ PII Firewall: Passports Blocked
+            </span>
+            <span class="badge badge-blue"
+                data-explain="Keycloak Authentication Engine"
+                data-category="IDENTITY STACK"
+                data-why="Uses open-source Keycloak so Bornan pays zero per-user login fees."
+                data-desc="Keycloak manages logins, passwords, and permissions (for example, making sure a sponsor sees summary numbers while a PANAM admin sees full federation reports).">
+                🔑 Keycloak OIDC: Connected
+            </span>
+            <span class="badge badge-amber"
+                data-explain="100% Bornan Proprietary IP"
+                data-category="COST & OWNERSHIP"
+                data-why="Avoids expensive per-seat licenses from Salesforce, HubSpot, or Power BI."
+                data-desc="IP means 'Intellectual Property'. Because Bornan owns the product roadmap and architecture end-to-end, Bornan retains full intellectual property and can scale this commercial model across federations like OCA and FISU.">
+                💎 100% Bornan IP (Custom BI)
+            </span>
+        </div>
+    </header>
+
+    <!-- Beginner Hover Instruction Strip -->
+    <div class="helper-banner">
+        <span>💡 <strong>Beginner Explanation Mode is ON:</strong> Move your mouse over any card, chart, button, filter, or table row to learn what it does in simple terms.</span>
+        <span style="font-size:0.78rem; color:#94a3b8;"><strong>Product Direction:</strong> Hasna Yazid, Sr. PO · Governance: Stage-Gated POC</span>
+    </div>
+
+    <div class="content">
+
+        <!-- ========================================================= -->
+        <!-- TAB 1: MODULE B - CUSTOM BI & SPONSOR COCKPIT             -->
+        <!-- ========================================================= -->
+        <div id="tab-cockpit" class="tab-panel active">
+            <!-- 4-Stage Architecture Mini Bar -->
+            <div class="pipeline">
+                <div class="pipe-step"
+                    data-explain="Stage 1: GMS Event Operations (Source)"
+                    data-category="ARCHITECTURE STEP 1"
+                    data-why="Keeps live tournament operations 100% safe while unlocking old data."
+                    data-desc="During a tournament, Bornan's GMS registers athletes, coaches, and media. Once the Games end, we take a safe copy of that closed database without disturbing live systems.">
+                    <div class="pipe-num">Stage 1 · Source</div>
+                    <div class="pipe-name">GMS Closed Events</div>
+                    <div class="pipe-desc">Active GMS DB stays untouched; historical records extracted safely.</div>
+                </div>
+                <div class="pipe-step s2"
+                    data-explain="Stage 2: Post-Event Data Layer (PostgreSQL)"
+                    data-category="ARCHITECTURE STEP 2"
+                    data-why="Turns messy, duplicate tournament spreadsheets into one clean master database."
+                    data-desc="PostgreSQL is a reliable database where we merge duplicate people across multiple Games into one 'Golden Record' and remove sensitive passport numbers.">
+                    <div class="pipe-num">Stage 2 · Persistence</div>
+                    <div class="pipe-name">PostgreSQL Golden Records</div>
+                    <div class="pipe-desc">Deduplicated multi-edition profiles + automated PII filter.</div>
+                </div>
+                <div class="pipe-step s3"
+                    data-explain="Stage 3: Keycloak SSO & Consent Vault"
+                    data-category="ARCHITECTURE STEP 3"
+                    data-why="Gives athletes a reason to come back and legally opt in to sponsor messages."
+                    data-desc="Returning participants log in with Keycloak to verify their profile for upcoming Games and choose whether they consent to receive partner/sponsor offers.">
+                    <div class="pipe-num">Stage 3 · Identity</div>
+                    <div class="pipe-name">Keycloak SSO &amp; Opt-In</div>
+                    <div class="pipe-desc">One-click re-accreditation pre-fill &amp; auditable GDPR/LATAM consent.</div>
+                </div>
+                <div class="pipe-step s4"
+                    data-explain="Stage 4: Commercial CRM & Custom BI"
+                    data-category="ARCHITECTURE STEP 4"
+                    data-why="This is where PANAM pitches sponsors and Bornan generates recurring software revenue."
+                    data-desc="Interactive dashboards and audience builders built directly inside Bornan's web app—allowing PANAM to prove audience size to sponsors or sync data to Dynamics 365.">
+                    <div class="pipe-num">Stage 4 · Monetization</div>
+                    <div class="pipe-name">Custom BI &amp; Activation</div>
+                    <div class="pipe-desc">41-NOC analytics, sponsor cohorts &amp; Dynamics 365 connector.</div>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card navy"
+                    data-explain="Total Unified Golden Records"
+                    data-category="KEY METRIC 1"
+                    data-why="Proves the value of merging multiple Games instead of starting from zero every 4 years."
+                    data-desc="Before deduplication, 3 Games might look like 165,000 separate rows. After merging returning people, we see 124,800 unique, verified individuals across the Americas.">
+                    <div class="kpi-label">Unified Golden Records</div>
+                    <div class="kpi-val">124,800</div>
+                    <div class="kpi-sub">Merged from 3 historical PANAM editions</div>
+                </div>
+                <div class="kpi-card"
+                    data-explain="41 National Olympic Committees (NOCs)"
+                    data-category="KEY METRIC 2"
+                    data-why="Shows full continental coverage across North, Central, South America, and the Caribbean."
+                    data-desc="An NOC is a country's Olympic organization (like Team USA, Brazil, Mexico, or Chile). PANAM Sports oversees 41 NOCs, and every single one is represented here.">
+                    <div class="kpi-label">Active NOCs Covered</div>
+                    <div class="kpi-val">41 / 41</div>
+                    <div class="kpi-sub">100% PANAM continental federation coverage</div>
+                </div>
+                <div class="kpi-card green"
+                    data-explain="Verified Marketing Opt-In Rate"
+                    data-category="KEY METRIC 3"
+                    data-why="Sponsors will only pay for contacts who legally agreed to receive communications."
+                    data-desc="68% of unified profiles have explicitly given permission (opt-in consent) to receive federation news and official sponsor promotions.">
+                    <div class="kpi-label">Compliant Opt-In Audience</div>
+                    <div class="kpi-val">84,860</div>
+                    <div class="kpi-sub">68% verified GDPR / LATAM marketing consent</div>
+                </div>
+                <div class="kpi-card red"
+                    data-explain="Multi-Games Retention Rate"
+                    data-category="KEY METRIC 4"
+                    data-why="Proves why Fast-Track Re-Accreditation saves huge time for returning participants."
+                    data-desc="34% of accredited people appear in more than one PANAM Games (for example, an athlete who later becomes a coach).">
+                    <div class="kpi-label">Multi-Edition Returnees</div>
+                    <div class="kpi-val">34.2%</div>
+                    <div class="kpi-sub">42,680 people tracked across 2+ Games</div>
+                </div>
+            </div>
+
+
+            <!-- Regional Map + KPIs + Multi-Edition & Consent Graphs -->
+            <div class="analytics-grid">
+                <!-- Left: Interactive PANAM Continental Hub Map & Regional KPIs -->
+                <div class="card" style="margin-bottom:0;"
+                    data-explain="Continental NOC Hub Map & Regional KPIs"
+                    data-category="MODULE B · GEO-INTELLIGENCE"
+                    data-why="Lets commercial and federation leaders inspect audience density, opt-in rates, and sponsor readiness by region across the Americas."
+                    data-desc="Click any regional hub on the map or use the quick pills to inspect Golden Records, Opt-In rates, top sports, and sponsor activation value for that zone.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Americas 41-NOC Hub Map &amp; Regional KPIs</div>
+                            <div class="card-sub">Interactive regional telemetry across North, Central/Caribbean &amp; South America</div>
+                        </div>
+                        <span class="badge badge-blue" id="map-active-badge">41 NOCs · Live Telemetry</span>
+                    </div>
+
+                    <div class="map-stage">
+                        <div class="map-toolbar">
+                            <div class="map-chip-group">
+                                <button class="map-chip active" data-region-btn="all" onclick="selectRegionHub('all', this)">All Americas (41)</button>
+                                <button class="map-chip" data-region-btn="north" onclick="selectRegionHub('north', this)">North (3)</button>
+                                <button class="map-chip" data-region-btn="carib" onclick="selectRegionHub('carib', this)">Central &amp; Carib (26)</button>
+                                <button class="map-chip" data-region-btn="south" onclick="selectRegionHub('south', this)">South America (12)</button>
+                            </div>
+                            <span style="font-size:0.72rem; color:#d8c8f0;">Click a hub dot to inspect</span>
+                        </div>
+
+                        <div class="map-layout">
+                            <svg class="americas-svg" viewBox="0 0 360 280" role="img" aria-label="Interactive map of the Americas showing PANAM Sports regional hubs">
+                                <defs>
+                                    <linearGradient id="landGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#3b3678" stop-opacity="0.72" />
+                                        <stop offset="100%" stop-color="#6a2978" stop-opacity="0.62" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Latitude / Longitude Grid -->
+                                <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+                                    <line x1="0" y1="60" x2="360" y2="60" />
+                                    <line x1="0" y1="125" x2="360" y2="125" />
+                                    <line x1="0" y1="190" x2="360" y2="190" />
+                                    <line x1="95" y1="0" x2="95" y2="280" />
+                                    <line x1="185" y1="0" x2="185" y2="280" />
+                                    <line x1="275" y1="0" x2="275" y2="280" />
+                                </g>
+                                <!-- Stylized North, Central & South America Silhouettes -->
+                                <path d="M42,24 L168,18 L186,44 L164,86 L132,112 L106,104 L74,78 L36,52 Z" fill="url(#landGrad)" stroke="#c5b2de" stroke-width="1.2" />
+                                <path d="M112,108 L142,114 L168,136 L196,144 L184,154 L152,146 L126,128 Z" fill="url(#landGrad)" stroke="#c5b2de" stroke-width="1.2" />
+                                <path d="M188,154 L232,156 L264,182 L252,226 L216,264 L196,268 L188,224 L176,184 Z" fill="url(#landGrad)" stroke="#c5b2de" stroke-width="1.2" />
+
+                                <!-- Regional Corridor Connectors -->
+                                <g stroke="#d8e28b" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.65">
+                                    <line x1="122" y1="66" x2="118" y2="106" />
+                                    <line x1="118" y1="106" x2="176" y2="146" />
+                                    <line x1="176" y1="146" x2="226" y2="194" />
+                                    <line x1="226" y1="194" x2="202" y2="244" />
+                                </g>
+
+                                <!-- Hub 1: North America (USA / CAN / MEX) -->
+                                <g class="hub-node" onclick="selectRegionHub('north')" transform="translate(122, 66)">
+                                    <circle class="hub-pulse" r="17" fill="rgba(143, 158, 72, 0.22)" stroke="#d8e28b" stroke-width="1.2" />
+                                    <circle class="hub-core" r="7" fill="#d8e28b" stroke="#0f1324" stroke-width="2" />
+                                    <text x="14" y="4" fill="#ffffff" font-size="10.5" font-weight="800">North Hub</text>
+                                </g>
+
+                                <!-- Hub 2: Central & Caribbean -->
+                                <g class="hub-node" onclick="selectRegionHub('carib')" transform="translate(154, 136)">
+                                    <circle class="hub-pulse" r="16" fill="rgba(197, 178, 222, 0.24)" stroke="#c5b2de" stroke-width="1.2" />
+                                    <circle class="hub-core" r="6.5" fill="#c5b2de" stroke="#0f1324" stroke-width="2" />
+                                    <text x="13" y="4" fill="#f5effa" font-size="10" font-weight="700">Carib &amp; CA</text>
+                                </g>
+
+                                <!-- Hub 3: South Core (BRA / COL / PER) -->
+                                <g class="hub-node" onclick="selectRegionHub('south')" transform="translate(226, 192)">
+                                    <circle class="hub-pulse" r="19" fill="rgba(216, 226, 139, 0.25)" stroke="#e2ee8f" stroke-width="1.4" />
+                                    <circle class="hub-core" r="7.5" fill="#7f1b77" stroke="#e2ee8f" stroke-width="2" />
+                                    <text x="-66" y="4" fill="#ffffff" font-size="10.5" font-weight="800">South Core</text>
+                                </g>
+
+                                <!-- Hub 4: Southern Cone (CHI / ARG) -->
+                                <g class="hub-node" onclick="selectRegionHub('south')" transform="translate(202, 244)">
+                                    <circle class="hub-pulse" r="15" fill="rgba(143, 158, 72, 0.22)" stroke="#d8e28b" stroke-width="1.2" />
+                                    <circle class="hub-core" r="6" fill="#a6b74b" stroke="#0f1324" stroke-width="2" />
+                                    <text x="12" y="4" fill="#e2ee8f" font-size="10" font-weight="700">Santiago / Cone</text>
+                                </g>
+                            </svg>
+
+                            <div class="region-inspector" id="region-inspector">
+                                <div class="region-inspector-tag" id="reg-tag">CONTINENTAL OVERVIEW · 41 NOCs</div>
+                                <div class="region-inspector-title" id="reg-title">All Pan Am Regions</div>
+                                <div class="mini-kpi-grid">
+                                    <div class="mini-kpi">
+                                        <div class="mk-label">Golden Profiles</div>
+                                        <div class="mk-val" id="reg-profiles">124,800</div>
+                                    </div>
+                                    <div class="mini-kpi">
+                                        <div class="mk-label">Opt-In Rate</div>
+                                        <div class="mk-val" id="reg-optin">68.0%</div>
+                                    </div>
+                                    <div class="mini-kpi">
+                                        <div class="mk-label">Returnee Rate</div>
+                                        <div class="mk-val" id="reg-return">34.2%</div>
+                                    </div>
+                                    <div class="mini-kpi">
+                                        <div class="mk-label">Sponsor Readiness</div>
+                                        <div class="mk-val" id="reg-sponsor">84.8k Reach</div>
+                                    </div>
+                                </div>
+                                <div style="font-size:0.78rem; color:#e2def0; line-height:1.45;" id="reg-summary">
+                                    Full continental footprint across North America, Central America &amp; Caribbean, and South America with zero raw passport storage.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Multi-Edition Growth Graph & Consent / Channel Breakdown -->
+                <div class="card" style="margin-bottom:0;"
+                    data-explain="Multi-Edition Growth & Consent Telemetry Graphs"
+                    data-category="MODULE B · EXECUTIVE GRAPHS"
+                    data-why="Visualizes how unified records compound across Games cycles and how opt-in consent behaves by stakeholder group."
+                    data-desc="Includes a multi-edition Golden Record & Opt-In trajectory graph across 2015, 2019, and 2023 plus consent opt-in rates across Athletes, Officials/Coaches, and Media.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Multi-Edition Trajectory &amp; Consent Graph</div>
+                            <div class="card-sub">Cumulative database growth &amp; opt-in verification across cycles</div>
+                        </div>
+                        <span class="badge badge-green">+48% Multi-Cycle Lift</span>
+                    </div>
+
+                    <div class="graph-stack">
+                        <div class="graph-box"
+                            data-explain="Cumulative Golden Records & Opt-In Curve"
+                            data-category="TIME-SERIES GRAPH"
+                            data-why="Shows executives that each new Games enriches the permanent CRM rather than resetting to zero."
+                            data-desc="Compares cumulative unified profiles (plum/indigo line) and verified opt-in audience (chartreuse line) across Toronto 2015, Lima 2019, and Santiago 2023.">
+                            <div class="graph-box-top">
+                                <span class="graph-box-title">Cumulative Golden Records vs. Opt-In Reach</span>
+                                <span class="graph-box-meta">2015 → 2019 → 2023</span>
+                            </div>
+                            <svg class="trend-svg" viewBox="0 0 380 112" role="img" aria-label="Graph showing cumulative golden records and opt-in audience across 2015, 2019, and 2023">
+                                <defs>
+                                    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#7f1b77" stop-opacity="0.28" />
+                                        <stop offset="100%" stop-color="#7f1b77" stop-opacity="0.02" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Horizontal Gridlines -->
+                                <line x1="36" y1="18" x2="362" y2="18" stroke="#e3dfed" stroke-dasharray="3 3" />
+                                <line x1="36" y1="52" x2="362" y2="52" stroke="#e3dfed" stroke-dasharray="3 3" />
+                                <line x1="36" y1="86" x2="362" y2="86" stroke="#e3dfed" stroke-dasharray="3 3" />
+
+                                <!-- Y-Axis Labels -->
+                                <text x="2" y="21" fill="#4e556e" font-size="9" font-weight="700">130k</text>
+                                <text x="6" y="55" fill="#4e556e" font-size="9" font-weight="700">85k</text>
+                                <text x="6" y="89" fill="#4e556e" font-size="9" font-weight="700">40k</text>
+
+                                <!-- Area under Golden Records -->
+                                <polygon points="56,78 205,49 352,22 352,92 56,92" fill="url(#areaGrad)" />
+
+                                <!-- Golden Records Line -->
+                                <polyline fill="none" stroke="#552471" stroke-width="3" points="56,78 205,49 352,22" />
+                                <!-- Opt-In Audience Line -->
+                                <polyline fill="none" stroke="#7e8d39" stroke-width="3" points="56,86 205,65 352,44" />
+
+                                <!-- Data Points & Labels -->
+                                <circle cx="56" cy="78" r="4.5" fill="#262d5e" />
+                                <text x="44" y="71" fill="#141729" font-size="9.5" font-weight="800">52k</text>
+
+                                <circle cx="205" cy="49" r="4.5" fill="#262d5e" />
+                                <text x="192" y="42" fill="#141729" font-size="9.5" font-weight="800">91k</text>
+
+                                <circle cx="352" cy="22" r="5" fill="#7f1b77" />
+                                <text x="326" y="15" fill="#7f1b77" font-size="9.5" font-weight="800">124.8k</text>
+
+                                <circle cx="352" cy="44" r="4.5" fill="#7e8d39" />
+                                <text x="322" y="57" fill="#55621c" font-size="9" font-weight="800">84.9k opt-in</text>
+
+                                <!-- X-Axis Labels -->
+                                <text x="40" y="106" fill="#4e556e" font-size="9.5" font-weight="700">Toronto 2015</text>
+                                <text x="188" y="106" fill="#4e556e" font-size="9.5" font-weight="700">Lima 2019</text>
+                                <text x="316" y="106" fill="#4e556e" font-size="9.5" font-weight="700">Santiago 2023</text>
+                            </svg>
+                        </div>
+
+                        <div class="graph-box"
+                            data-explain="Opt-In Consent Rate by Stakeholder Role"
+                            data-category="COMPLIANCE & COMMERCIAL GRAPH"
+                            data-why="Shows sponsors and PANAM leadership which stakeholder segments have the strongest verified opt-in rates."
+                            data-desc="Compares verified marketing consent percentages across Athletes, Coaches & NOC Officials, and Accredited Press & Media.">
+                            <div class="graph-box-top">
+                                <span class="graph-box-title">Verified Opt-In Consent by Stakeholder Group</span>
+                                <span class="graph-box-meta">GDPR &amp; LATAM Audited</span>
+                            </div>
+                            <div class="consent-bars">
+                                <div class="c-row">
+                                    <span class="c-name">Athletes</span>
+                                    <div class="c-track"><div class="c-fill-1" style="width:72%;"></div></div>
+                                    <span class="c-pct">72%</span>
+                                </div>
+                                <div class="c-row">
+                                    <span class="c-name">Coaches &amp; NOCs</span>
+                                    <div class="c-track"><div class="c-fill-2" style="width:65%;"></div></div>
+                                    <span class="c-pct">65%</span>
+                                </div>
+                                <div class="c-row">
+                                    <span class="c-name">Press &amp; Media</span>
+                                    <div class="c-track"><div class="c-fill-3" style="width:61%;"></div></div>
+                                    <span class="c-pct">61%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Two-Column BI + Cohort Builder -->
+            <div class="two-col">
+                <!-- Left: Custom BI Explorer -->
+                <div class="card"
+                    data-explain="Custom In-House BI Analytics Panel"
+                    data-category="MODULE B · CUSTOM BI"
+                    data-why="Built directly by Bornan's developers so there are zero third-party Power BI or Tableau seat fees."
+                    data-desc="This chart breaks down accredited people by country (NOC) and role (Athletes, Coaches/Officials, and Press/Media). Executives can filter by sport or Games edition in under 2 seconds.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">41-NOC Ecosystem Explorer (Custom In-House BI)</div>
+                            <div class="card-sub">Accredited participants by National Olympic Committee &amp; functional role</div>
+                        </div>
+                        <select style="width:180px;" onchange="updateChart(this.value)"
+                            data-explain="Games Edition Filter"
+                            data-category="INTERACTIVE BI FILTER"
+                            data-why="Lets commercial teams compare audience growth across different tournament years."
+                            data-desc="Switch between all merged Games combined or inspect a specific historical edition like Santiago 2023 or Lima 2019.">
+                            <option value="all">All Merged Editions</option>
+                            <option value="2023">Santiago 2023 Only</option>
+                            <option value="2019">Lima 2019 Only</option>
+                        </select>
+                    </div>
+
+                    <div id="noc-bars">
+                        <div class="bar-row"
+                            data-explain="Brazil (BRA) Delegation Breakdown"
+                            data-category="NOC DATA ROW"
+                            data-why="Helps sponsors targeting specific countries see exact audience size."
+                            data-desc="Brazil has 11,420 unified profiles across editions, split between athletes (dark blue), coaches/officials (sky blue), and media/press (red).">
+                            <div class="bar-label">🇧🇷 Brazil (BRA)</div>
+                            <div class="bar-track">
+                                <div class="bar-fill-ath" style="width:52%"></div>
+                                <div class="bar-fill-off" style="width:26%"></div>
+                                <div class="bar-fill-med" style="width:14%"></div>
+                            </div>
+                            <div class="bar-num">11,420</div>
+                        </div>
+                        <div class="bar-row"
+                            data-explain="United States (USA) Delegation Breakdown"
+                            data-category="NOC DATA ROW"
+                            data-why="Shows high-value North American commercial reach for global sponsors."
+                            data-desc="Team USA accounts for 10,890 unified records across athletes, team support staff, and accredited broadcasters.">
+                            <div class="bar-label">🇺🇸 USA (USA)</div>
+                            <div class="bar-track">
+                                <div class="bar-fill-ath" style="width:50%"></div>
+                                <div class="bar-fill-off" style="width:24%"></div>
+                                <div class="bar-fill-med" style="width:13%"></div>
+                            </div>
+                            <div class="bar-num">10,890</div>
+                        </div>
+                        <div class="bar-row"
+                            data-explain="Mexico (MEX) Delegation Breakdown"
+                            data-category="NOC DATA ROW"
+                            data-why="Key LATAM market for regional telecommunications, banking, and airline sponsors."
+                            data-desc="Mexico has 9,640 unified profiles ready for compliant regional sponsor activations.">
+                            <div class="bar-label">🇲🇽 Mexico (MEX)</div>
+                            <div class="bar-track">
+                                <div class="bar-fill-ath" style="width:45%"></div>
+                                <div class="bar-fill-off" style="width:22%"></div>
+                                <div class="bar-fill-med" style="width:11%"></div>
+                            </div>
+                            <div class="bar-num">9,640</div>
+                        </div>
+                        <div class="bar-row"
+                            data-explain="Chile (CHI) Host Nation Breakdown"
+                            data-category="NOC DATA ROW"
+                            data-why="Host nations generate massive local volunteer, media, and official databases."
+                            data-desc="Chile shows 9,150 unified records boosted by host-city operations and local media accreditation.">
+                            <div class="bar-label">🇨🇱 Chile (CHI)</div>
+                            <div class="bar-track">
+                                <div class="bar-fill-ath" style="width:40%"></div>
+                                <div class="bar-fill-off" style="width:25%"></div>
+                                <div class="bar-fill-med" style="width:10%"></div>
+                            </div>
+                            <div class="bar-num">9,150</div>
+                        </div>
+                        <div class="bar-row"
+                            data-explain="Colombia (COL) & Argentina (ARG)"
+                            data-category="NOC DATA ROW"
+                            data-why="Demonstrates multi-country segmentation across South America."
+                            data-desc="Colombia (8,310) and Argentina (8,190) represent strong multi-edition athletic and coaching cohorts.">
+                            <div class="bar-label">🇨🇴 Colombia (COL)</div>
+                            <div class="bar-track">
+                                <div class="bar-fill-ath" style="width:41%"></div>
+                                <div class="bar-fill-off" style="width:19%"></div>
+                                <div class="bar-fill-med" style="width:8%"></div>
+                            </div>
+                            <div class="bar-num">8,310</div>
+                        </div>
+                        <div class="bar-row"
+                            data-explain="Remaining 36 NOCs Combined"
+                            data-category="LONG-TAIL ECOSYSTEM"
+                            data-why="Ensures smaller Caribbean and Central American federations get equal visibility."
+                            data-desc="The remaining 36 National Olympic Committees contribute 67,200 unified profiles across all sports.">
+                            <div class="bar-label">🌎 Other 36 NOCs</div>
+                            <div class="bar-track">
+                                <div class="bar-fill-ath" style="width:55%"></div>
+                                <div class="bar-fill-off" style="width:28%"></div>
+                                <div class="bar-fill-med" style="width:12%"></div>
+                            </div>
+                            <div class="bar-num">67,200</div>
+                        </div>
+                    </div>
+
+                    <div class="legend"
+                        data-explain="Chart Color Legend"
+                        data-category="VISUAL GUIDE"
+                        data-why="Makes it easy to distinguish competitors from staff and journalists."
+                        data-desc="Dark Navy = Athletes, Sky Blue = Coaches & NOC Officials, Crimson Red = Accredited Press & Broadcasters.">
+                        <span><i class="legend-dot" style="background:var(--bornan-indigo)"></i>Athletes (58%)</span>
+                        <span><i class="legend-dot" style="background:var(--bornan-magenta)"></i>Coaches &amp; NOC Officials (28%)</span>
+                        <span><i class="legend-dot" style="background:var(--bornan-chartreuse)"></i>Press &amp; Media (14%)</span>
+                    </div>
+                </div>
+
+                <!-- Right: Sponsor Audience Cohort Builder -->
+                <div class="card"
+                    data-explain="Sponsor Audience Cohort Builder"
+                    data-category="REVENUE ENGINE · MODULE B"
+                    data-why="Helps PANAM's commercial team sell higher-value sponsorship packages backed by real numbers."
+                    data-desc="A 'Cohort' is simply a targeted group of people. Here, PANAM's commercial team can filter by region, sport, and role to see how many opted-in people a sponsor can reach—without exposing private emails.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Sponsor Audience Cohort Builder</div>
+                            <div class="card-sub">Segment compliant audiences for sponsor pitches</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"
+                        data-explain="Region / NOC Target Filter"
+                        data-category="SEGMENTATION FILTER"
+                        data-why="Sponsors often want to target specific countries or all of Latin America."
+                        data-desc="Choose which geographic region or National Olympic Committees to include in this sponsor audience.">
+                        <label>Target Region / NOCs</label>
+                        <select id="seg-region" onchange="recalcCohort()">
+                            <option value="latam">All LATAM NOCs (38 Countries)</option>
+                            <option value="south">South America Only (12 NOCs)</option>
+                            <option value="north">North America (USA, CAN, MEX)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"
+                        data-explain="Sport Discipline Filter"
+                        data-category="SEGMENTATION FILTER"
+                        data-why="Allows endemic brands (like swimwear or running shoe sponsors) to target relevant sports."
+                        data-desc="Filter the audience down to specific sports like Aquatics, Athletics, or Team Sports.">
+                        <label>Sport Category</label>
+                        <select id="seg-sport" onchange="recalcCohort()">
+                            <option value="all">All Pan Am Sports (39 Disciplines)</option>
+                            <option value="aquatics">Aquatics &amp; Water Sports</option>
+                            <option value="athletics">Athletics &amp; Track</option>
+                            <option value="team">Football, Basketball &amp; Volleyball</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"
+                        data-explain="Accredited Role Filter"
+                        data-category="SEGMENTATION FILTER"
+                        data-why="Different sponsors want different audiences—e.g. airlines want officials/media, sportswear wants athletes."
+                        data-desc="Select whether you want to target Athletes, Coaches/Officials, Media/Press, or everyone.">
+                        <label>Accredited Role</label>
+                        <select id="seg-role" onchange="recalcCohort()">
+                            <option value="all">All Accredited Roles</option>
+                            <option value="athletes">Athletes Only</option>
+                            <option value="media">Accredited Press &amp; Media</option>
+                            <option value="officials">Coaches &amp; NOC Officials</option>
+                        </select>
+                    </div>
+
+                    <div class="cohort-result"
+                        data-explain="Live Opt-In Reach Scorecard"
+                        data-category="SPONSOR VALUATION OUTPUT"
+                        data-why="Gives PANAM instant proof of audience size during live sponsor sales meetings."
+                        data-desc="Shows the exact number of people matching your filters who have legally opted in to sponsor messages. Raw emails stay hidden to protect privacy.">
+                        <div style="font-size:0.75rem; font-weight:800; color:var(--bornan-plum); text-transform:uppercase;">Verified Opt-In Sponsor Reach</div>
+                        <div class="big-num" id="cohort-count">61,420 Profiles</div>
+                        <div style="font-size:0.8rem; color:var(--text); margin-top:4px;" id="cohort-detail">100% GDPR/LATAM Consent Verified · Raw PII Masked</div>
+                    </div>
+
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-red" style="flex:1;" onclick="notify('Campaign webhook triggered for ' + document.getElementById('cohort-count').innerText + ' (Opt-in verified).')"
+                            data-explain="Trigger Sponsor Campaign Webhook"
+                            data-category="ACTION BUTTON"
+                            data-why="Starts an approved sponsor campaign without handing over a raw spreadsheet of emails."
+                            data-desc="Sends an encrypted trigger to the email/marketing tool so the sponsor's approved message goes out safely to this exact segment.">
+                            🚀 Trigger Campaign
+                        </button>
+                        <button class="btn btn-navy" style="flex:1;" onclick="notify('Synced ' + document.getElementById('cohort-count').innerText + ' to Dynamics 365 Sandbox!')"
+                            data-explain="Sync Cohort to Microsoft Dynamics 365"
+                            data-category="ENTERPRISE CONNECTOR"
+                            data-why="Proves this platform works alongside Microsoft Dynamics 365 if a federation uses it."
+                            data-desc="Pushes this clean, deduplicated, opted-in audience directly into Microsoft Dynamics 365 via REST API.">
+                            🔄 Sync to D365
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 2: MODULE A - GOLDEN RECORDS & PII FIREWALL           -->
+        <!-- ========================================================= -->
+        <div id="tab-golden" class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Module A: Golden Record Deduplication &amp; PII Firewall</div>
+                        <div class="card-sub">How fragmented GMS tournament rows become unified, privacy-safe master profiles</div>
+                    </div>
+                    <button class="btn btn-blue" onclick="notify('Simulated batch ETL run: 1,240 new records deduplicated, 1,240 passport numbers stripped!')"
+                        data-explain="Run Batch Historical ETL Import"
+                        data-category="SPRINT 1 ENGINE"
+                        data-why="Demonstrates how closed tournament databases are safely imported without touching live GMS."
+                        data-desc="ETL stands for 'Extract, Transform, Load'. Clicking this simulates reading a closed tournament file, merging duplicate people, and blocking sensitive passport numbers.">
+                        ⚡ Simulate Batch ETL Run
+                    </button>
+                </div>
+
+                <p style="font-size:0.9rem; margin-bottom:16px;">
+                    In traditional Games operations, the same person gets registered separately at every tournament. Below is how our <strong>PostgreSQL Golden Record Engine</strong> links their history while blocking high-risk travel documents:
+                </p>
+
+                <div style="overflow-x:auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-explain="Unique Master ID" data-category="DATABASE KEY" data-why="Ensures one person has one permanent ID across all future Games." data-desc="A permanent ID created in PostgreSQL after matching email, name, date of birth, and nationality.">Golden ID</th>
+                                <th data-explain="Participant Identity" data-category="NEED-TO-HAVE FIELD" data-why="Core contact info needed for federation communication." data-desc="The person's verified name, nationality, and primary email address.">Participant &amp; NOC</th>
+                                <th data-explain="Cross-Games Role Evolution" data-category="CONTEXTUAL HISTORY" data-why="Tracks career progression (e.g. Athlete -> Coach) without overwriting past records." data-desc="Shows every Games the person attended and how their role changed over time.">Multi-Edition History</th>
+                                <th data-explain="PII Compliance Firewall Status" data-category="SECURITY GUARDRAIL" data-why="Eliminates identity theft and regulatory risk by never storing passport numbers." data-desc="Travel IDs and Passport numbers stay inside GMS and are blocked/stripped before entering this CRM.">Passport / Travel ID</th>
+                                <th data-explain="Marketing Consent Status" data-category="LEGAL PERMISSION" data-why="Only 'Opted-In' profiles can be activated for sponsor campaigns." data-desc="Shows whether the person has granted permission for federation or sponsor emails.">Consent Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-explain="Example Golden Record #1 (Athlete -> Coach)" data-category="DEDUPLICATED PROFILE" data-why="Shows how one person's transition from athlete to coach is preserved." data-desc="Camila Silva competed as a Swimmer in Lima 2019 and returned as a Team Coach in Santiago 2023. Both records are unified under one Golden ID.">
+                                <td><strong>GR-10492</strong></td>
+                                <td><strong>Camila Silva</strong><br><span style="color:var(--muted);font-size:0.78rem;">🇧🇷 BRA · c.silva@cbda.org.br</span></td>
+                                <td>Lima 2019 (Athlete - Aquatics)<br>Santiago 2023 (Team Coach)</td>
+                                <td><span class="pill pill-blocked">🛡️ BLOCKED AT ETL</span></td>
+                                <td><span class="pill pill-ok">✓ Opt-In Verified</span></td>
+                            </tr>
+                            <tr data-explain="Example Golden Record #2 (Returning Journalist)" data-category="DEDUPLICATED PROFILE" data-why="Media contacts are critical for PANAM's broadcast and press outreach." data-desc="Carlos Méndez covered 3 straight Pan Am Games as accredited press. His profile is ready for pre-Games media briefings.">
+                                <td><strong>GR-10815</strong></td>
+                                <td><strong>Carlos Méndez</strong><br><span style="color:var(--muted);font-size:0.78rem;">🇲🇽 MEX · cmendez@sportpress.mx</span></td>
+                                <td>Toronto 2015, Lima 2019, Santiago 2023 (Accredited Press)</td>
+                                <td><span class="pill pill-blocked">🛡️ BLOCKED AT ETL</span></td>
+                                <td><span class="pill pill-ok">✓ Opt-In Verified</span></td>
+                            </tr>
+                            <tr data-explain="Example Golden Record #3 (No Marketing Consent)" data-category="PRIVACY ENFORCEMENT" data-why="Proves the system respects users who decline sponsor emails." data-desc="Jordan Taylor is stored for NOC re-accreditation convenience, but because Opt-In is 'Federation Only', they are automatically excluded from sponsor campaigns.">
+                                <td><strong>GR-11204</strong></td>
+                                <td><strong>Jordan Taylor</strong><br><span style="color:var(--muted);font-size:0.78rem;">🇺🇸 USA · j.taylor@usatf.org</span></td>
+                                <td>Santiago 2023 (Athlete - Athletics)</td>
+                                <td><span class="pill pill-blocked">🛡️ BLOCKED AT ETL</span></td>
+                                <td><span class="pill pill-sync">Federation Ops Only</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 3: MODULE C - KEYCLOAK SSO & CONSENT PORTAL           -->
+        <!-- ========================================================= -->
+        <div id="tab-keycloak" class="tab-panel">
+            <div class="two-col">
+                <div class="card"
+                    data-explain="Participant Self-Service & Keycloak Login Preview"
+                    data-category="MODULE C · SPRINT 3"
+                    data-why="Reduces NOC data-entry work by up to 60% and legally collects marketing opt-ins."
+                    data-desc="This is what a returning athlete, coach, or journalist sees when they log in with Keycloak before the next Pan Am Games. Their old details are pre-filled so they just verify and update.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Unified Participant Portal (Keycloak SSO)</div>
+                            <div class="card-sub">Self-service profile verification &amp; fast-track re-accreditation</div>
+                        </div>
+                        <span class="badge badge-blue">Keycloak OIDC Session</span>
+                    </div>
+
+                    <div style="background:#f8fafc; border:1px solid var(--border); border-radius:6px; padding:14px; margin-bottom:14px;">
+                        <div style="font-size:0.78rem; color:var(--muted); font-weight:700;">LOGGED IN VIA KEYCLOAK REALM: <code>panam-stakeholders</code></div>
+                        <div style="font-size:1.05rem; font-weight:800; color:var(--bornan-indigo); margin-top:4px;">Welcome back, Camila Silva (🇧🇷 Brazil · Aquatics)</div>
+                        <div style="font-size:0.82rem; color:#55621c; font-weight:700; margin-top:2px;">✓ Pre-filled from Santiago 2023 Golden Record (GR-10492)</div>
+                    </div>
+
+                    <div class="form-group"
+                        data-explain="Pre-Filled Accreditation Role"
+                        data-category="FAST-TRACK RE-ACCREDITATION"
+                        data-why="Saves National Olympic Committees from re-typing returning delegates from scratch."
+                        data-desc="Camila's previous role is already loaded. She can confirm or update it in one click ahead of the next Games.">
+                        <label>Confirmed Role for Next Games</label>
+                        <input type="text" value="National Team Coach — Aquatics (Brazil NOC)" readonly>
+                    </div>
+
+                    <div class="form-group"
+                        data-explain="Granular Consent Preferences"
+                        data-category="GDPR / LATAM COMPLIANCE"
+                        data-why="Creates an auditable timestamp proving the user agreed to sponsor offers."
+                        data-desc="Users control exactly what messages they receive. Every toggle change is recorded with a timestamp for legal compliance.">
+                        <label>Communication &amp; Sponsor Consent Preferences</label>
+                        <div style="display:flex; flex-direction:column; gap:8px; margin-top:6px; font-size:0.86rem;">
+                            <label style="text-transform:none; font-weight:500;"><input type="checkbox" checked> Receive official PANAM Sports event &amp; accreditation alerts</label>
+                            <label style="text-transform:none; font-weight:500;"><input type="checkbox" checked> Receive exclusive perks &amp; offers from Official PANAM Sponsors</label>
+                            <label style="text-transform:none; font-weight:500;"><input type="checkbox"> Share profile with International Federation alumni directory</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-green" style="background:linear-gradient(135deg, #6d7b2c 0%, #8f9e48 100%); color:#fff; width:100%;" onclick="notify('Profile & Keycloak consent preferences saved with immutable audit timestamp!')"
+                        data-explain="Save Profile & Audit Consent"
+                        data-category="ACTION BUTTON"
+                        data-why="Updates the PostgreSQL Golden Record and logs legal consent."
+                        data-desc="Saves any profile edits and writes a permanent audit log entry proving when and how the user opted in.">
+                        ✓ Confirm Profile &amp; Save Consent Preferences
+                    </button>
+                </div>
+
+                <div class="card"
+                    data-explain="Why Keycloak Was Chosen"
+                    data-category="ARCHITECTURE DECISION"
+                    data-why="Aligns with the client's preferred stack while eliminating auth licensing fees."
+                    data-desc="Keycloak is an enterprise-grade open-source identity server. Using it gives Bornan Single Sign-On (SSO), role-based access control, and future multi-federation realms at zero license cost.">
+                    <div class="card-header">
+                        <div class="card-title">How Keycloak Powers the Ecosystem</div>
+                    </div>
+                    <ul style="margin-left:18px; font-size:0.88rem; line-height:1.65; color:var(--text);">
+                        <li style="margin-bottom:10px;"><strong>One Login Across Cycles:</strong> Athletes and officials use one account across multiple Pan Am editions instead of creating new logins every time.</li>
+                        <li style="margin-bottom:10px;"><strong>Role-Based Security (RBAC):</strong> Keycloak strictly separates what a <em>PANAM Admin</em>, an <em>NOC Manager</em>, a <em>Sponsor</em>, and an <em>Athlete</em> can see.</li>
+                        <li style="margin-bottom:10px;"><strong>Future Multi-Federation Ready:</strong> In Phase 2 (Post-Sale), Bornan can spin up separate Keycloak realms for <strong>OCA</strong> and <strong>FISU</strong> in minutes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 4: MODULE D - SPONSOR PORTAL & DYNAMICS 365 SYNC      -->
+        <!-- ========================================================= -->
+        <div id="tab-activation" class="tab-panel">
+            <div class="two-col">
+                <div class="card"
+                    data-explain="Permissioned Sponsor Activation Portal"
+                    data-category="MODULE D · SPONSOR MONETIZATION"
+                    data-why="Allows PANAM to sell sponsor activation packages without ever handing over raw athlete emails."
+                    data-desc="Sponsors log in via a restricted Keycloak role. They see aggregated audience counts and can submit a co-branded campaign for PANAM approval—raw personal contact info stays completely hidden.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Partner &amp; Sponsor Activation View (PII-Masked)</div>
+                            <div class="card-sub">Controlled campaign execution for Official PANAM Partners</div>
+                        </div>
+                        <span class="badge badge-amber">Keycloak Role: Sponsor_Partner</span>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sponsor Package</th>
+                                <th>Approved Segment</th>
+                                <th>Opt-In Reach</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-explain="Active Sponsor Campaign Example 1" data-category="REVENUE STREAM" data-why="Shows how sponsor activations generate recurring fees." data-desc="An official airline partner targets opted-in NOC officials and press ahead of regional meetings.">
+                                <td><strong>Official Airline Partner</strong></td>
+                                <td>NOC Officials &amp; Press (All Americas)</td>
+                                <td>24,150</td>
+                                <td><span class="pill pill-ok">Webhook Active</span></td>
+                            </tr>
+                            <tr data-explain="Active Sponsor Campaign Example 2" data-category="REVENUE STREAM" data-why="Shows sport-specific sponsor targeting." data-desc="An official sportswear sponsor promotes a training grant to opted-in athletics and aquatics athletes.">
+                                <td><strong>Sportswear Sponsor</strong></td>
+                                <td>Athletics &amp; Aquatics Athletes</td>
+                                <td>18,920</td>
+                                <td><span class="pill pill-sync">Pending PANAM Sign-Off</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card"
+                    data-explain="Microsoft Dynamics 365 Hybrid Sync Adapter"
+                    data-category="ENTERPRISE INTEROPERABILITY"
+                    data-why="Ensures Bornan wins whether PANAM uses our UI or Microsoft Dynamics 365."
+                    data-desc="Some federations evaluate Microsoft Dynamics 365 as their corporate CRM. This REST API adapter automatically pushes our clean, deduplicated, opted-in sports records into Dynamics 365.">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">Microsoft Dynamics 365 Sync Adapter</div>
+                            <div class="card-sub">Bi-directional REST API bridge for enterprise CRM deployments</div>
+                        </div>
+                    </div>
+                    <p style="font-size:0.86rem; margin-bottom:12px;">
+                        <strong>Why this matters strategically:</strong> Even if a federation selects Microsoft Dynamics 365 as their front-end CRM, Dynamics 365 cannot natively ingest or deduplicate messy GMS tournament files. Bornan's data layer remains the indispensable sports ingestion engine.
+                    </p>
+                    <div style="background:#f8fafc; border:1px solid var(--border); padding:12px; border-radius:6px; font-size:0.82rem; margin-bottom:12px;">
+                        <div><strong>Endpoint:</strong> <code>POST /api/v1/connectors/dynamics365/sync</code></div>
+                        <div style="margin-top:4px;"><strong>Filter Rule:</strong> <code>consent_marketing == TRUE AND pii_passport == NULL</code></div>
+                        <div style="margin-top:4px;"><strong>Last Sandbox Sync:</strong> 84,860 Golden Records (0 Errors)</div>
+                    </div>
+                    <button class="btn btn-blue" style="width:100%;" onclick="notify('Dynamics 365 Sandbox Sync verified: 84,860 consented records up to date!')"
+                        data-explain="Test Dynamics 365 Sandbox Sync"
+                        data-category="SPRINT 4 DELIVERABLE"
+                        data-why="Validates the enterprise integration milestone in Week 8."
+                        data-desc="Runs a test sync pushing opted-in Golden Records into a Dynamics 365 test environment.">
+                        🔄 Run Test Sync to Dynamics 365 Sandbox
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 5: MODULE E - MULTI-TENANT SCALE, I18N & METERING   -->
+        <!-- ========================================================= -->
+        <div id="tab-module-e" class="tab-panel">
+            <div class="card"
+                data-explain="Module E Interactive Control Center"
+                data-category="POST-SALE MODULE E"
+                data-why="Demonstrates how Bornan turns a single-client PANAM solution into a scalable multi-federation SaaS platform."
+                data-desc="In Phase 2 (after signing PANAM), Module E adds multi-tenant federation isolation (PANAM, OCA, FISU), multi-language UI (English, Spanish, French), and usage metering for billing.">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Module E: Multi-Tenant White-Label, Localization &amp; Metering Engine</div>
+                        <div class="card-sub">Post-sale scale-up across PANAM Sports, OCA, and FISU · Product Direction: Hasna Yazid, Senior Product Owner</div>
+                    </div>
+                    <span class="badge badge-amber">Post-Sale Scale-Up · Module E</span>
+                </div>
+
+                <div class="two-col" style="margin-bottom:0;">
+                    <div style="background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:16px;"
+                        data-explain="Federation Tenant & Language Simulator"
+                        data-category="MULTI-TENANT & I18N"
+                        data-why="Shows how one codebase serves different sports federations in their local languages."
+                        data-desc="Switch between PANAM Sports, Olympic Council of Asia (OCA), and FISU, and toggle English, Spanish, or French to preview localized federation labels.">
+                        <div class="form-group">
+                            <label>Active Federation Tenant (Keycloak Realm &amp; Schema)</label>
+                            <select id="e-tenant" onchange="updateModuleE()">
+                                <option value="panam">PANAM Sports (41 NOCs · Americas)</option>
+                                <option value="oca">Olympic Council of Asia / OCA (45 NOCs · Asia)</option>
+                                <option value="fisu">FISU University Sports (170+ Member Federations)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Localization Language (EN / ES / FR)</label>
+                            <select id="e-lang" onchange="updateModuleE()">
+                                <option value="en">English (EN)</option>
+                                <option value="es">Español (ES)</option>
+                                <option value="fr">Français (FR)</option>
+                            </select>
+                        </div>
+
+                        <div class="cohort-result" style="margin-bottom:0;" id="e-preview-box">
+                            <div style="font-size:0.74rem; font-weight:800; color:var(--bornan-plum); text-transform:uppercase;" id="e-preview-tag">TENANT PREVIEW · PANAM SPORTS</div>
+                            <div style="font-size:1.15rem; font-weight:800; color:var(--navy); margin-top:4px;" id="e-preview-headline">Post-Event CRM &amp; Sponsor Cockpit</div>
+                            <div style="font-size:0.82rem; color:var(--text); margin-top:4px;" id="e-preview-desc">Isolated PostgreSQL tenant schema + dedicated Keycloak realm + custom federation branding.</div>
+                        </div>
+                    </div>
+
+                    <div style="background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:16px;"
+                        data-explain="SaaS Usage & Metering Telemetry"
+                        data-category="USAGE METERING"
+                        data-why="Gives Bornan's product and finance teams exact usage counts for annual tiers, overages, and API syncs."
+                        data-desc="Tracks active Golden Records, NOC portal seats, sponsor campaign triggers, and Dynamics 365 API sync calls per tenant.">
+                        <div style="font-size:0.78rem; font-weight:800; color:var(--navy); text-transform:uppercase; margin-bottom:10px;">Live Tenant Usage &amp; Billing Meter</div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Metered Dimension</th>
+                                    <th>Current Usage</th>
+                                    <th>Plan Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-explain="Active Golden Records Meter" data-category="METERING Metric" data-why="Drives tiered annual subscription pricing.">
+                                    <td><strong>Active Golden Records</strong></td>
+                                    <td id="e-meter-records">124,800</td>
+                                    <td><span class="pill pill-ok">Within Tier</span></td>
+                                </tr>
+                                <tr data-explain="Active NOC / Portal Seats" data-category="METERING Metric" data-why="Tracks federation & sponsor seat usage.">
+                                    <td><strong>Portal &amp; NOC Seats</strong></td>
+                                    <td id="e-meter-seats">41 NOCs + 6 Sponsors</td>
+                                    <td><span class="pill pill-ok">Active</span></td>
+                                </tr>
+                                <tr data-explain="D365 & Webhook Sync Volume" data-category="METERING Metric" data-why="Monitors enterprise connector & webhook activity.">
+                                    <td><strong>D365 &amp; Webhook Syncs</strong></td>
+                                    <td id="e-meter-syncs">14,280 events/mo</td>
+                                    <td><span class="pill pill-sync">Metered</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-navy" style="width:100%; margin-top:12px;" onclick="notify('Exported Module E tenant metering snapshot for ' + document.getElementById('e-tenant').options[document.getElementById('e-tenant').selectedIndex].text)"
+                            data-explain="Export Usage Metering Snapshot"
+                            data-category="ACTION BUTTON"
+                            data-why="Helps product and commercial teams review tenant consumption.">
+                            📊 Export Tenant Metering Snapshot
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 6: ROADMAP & REVENUE STREAMS                          -->
+        <!-- ========================================================= -->
+        <div id="tab-monetization" class="tab-panel">
+            <div class="card"
+                data-explain="8-Week Lean POC Sprint Roadmap (1–2 Devs + PO)"
+                data-category="PRODUCT OWNER DELIVERY PLAN"
+                data-why="Shows how a small team delivers a live sales demo in 4 weeks and a full POC in 8 weeks."
+                data-desc="Rather than committing full engineering capacity upfront without validation, product delivery is structured into 2-week sprints with clear commercial and technical readiness gates at Week 4 and Week 8.">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Stage-Gated 8-Week POC Roadmap &amp; Post-Sale Scale-Up</div>
+                        <div class="card-sub">Lean 1–2 Developer + Senior PO execution sequence</div>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Phase / Sprint</th>
+                            <th>Timeline</th>
+                            <th>What Gets Built</th>
+                            <th>PO Gate / Milestone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-explain="Sprint 1: Data Ingestion & PII Firewall" data-category="WEEKS 1–2" data-why="You cannot show charts or run campaigns until the historical data is clean and safe." data-desc="Builds the PostgreSQL database, imports sample PANAM historical files, merges duplicate people, and blocks passport numbers.">
+                            <td><strong>Sprint 1 · Module A</strong></td>
+                            <td>Weeks 1–2</td>
+                            <td>PostgreSQL schema, historical parser, deduplication rules, PII travel ID filter.</td>
+                            <td><strong>Gate 1:</strong> &ge;95% match accuracy &amp; 0 raw passports stored.</td>
+                        </tr>
+                        <tr data-explain="Sprint 2: Custom BI & Sponsor Cockpit MVP" data-category="WEEKS 3–4 (SALES DEMO)" data-why="Gives the sales team a live interactive tool to pitch PANAM executives in Week 4." data-desc="Builds the 41-NOC explorer charts and the Sponsor Audience Cohort Builder directly in the web app.">
+                            <td><strong>Sprint 2 · Module B</strong></td>
+                            <td>Weeks 3–4</td>
+                            <td>Custom-built BI UI, 41-NOC explorer, demographic filters &amp; cohort builder.</td>
+                            <td><strong>Gate 2 (Week 4):</strong> Live executive sales pitch to PANAM.</td>
+                        </tr>
+                        <tr data-explain="Sprint 3: Keycloak SSO & Consent Center" data-category="WEEKS 5–6" data-why="Proves how returning participants update their own profiles and opt in legally." data-desc="Connects Keycloak login and builds the self-service participant profile & consent preference center.">
+                            <td><strong>Sprint 3 · Module C</strong></td>
+                            <td>Weeks 5–6</td>
+                            <td>Keycloak OIDC login, re-accreditation pre-fill, auditable opt-in vault.</td>
+                            <td><strong>Gate 3:</strong> End-to-end Keycloak login &amp; consent audit log verified.</td>
+                        </tr>
+                        <tr data-explain="Sprint 4: Activation & Dynamics 365 Connector" data-category="WEEKS 7–8 (FULL POC)" data-why="Completes the technical proof of concept and unlocks final contract signing." data-desc="Builds campaign webhook triggers, sponsor portal permissions, and the Microsoft Dynamics 365 API sync.">
+                            <td><strong>Sprint 4 · Module D</strong></td>
+                            <td>Weeks 7–8</td>
+                            <td>Campaign webhooks, sponsor PII-masked portal, Dynamics 365 API sync.</td>
+                            <td><strong>Gate 4 (Week 8):</strong> Full POC sign-off &amp; commercial close.</td>
+                        </tr>
+                        <tr data-explain="Phase 2: Post-Sale Scale-Up (Module E)" data-category="POST-SALE ONLY" data-why="Protects Bornan from spending money on multi-client scaling until PANAM signs." data-desc="Once PANAM signs the contract, Bornan expands the team to add multi-tenant white-labeling, EN/ES/FR languages, and usage billing for OCA and FISU.">
+                            <td><strong>Phase 2 · Module E</strong></td>
+                            <td>Post-Sale</td>
+                            <td>Multi-tenant realms/schemas, EN/ES/FR localization, SaaS usage metering.</td>
+                            <td><strong>Scale Gate:</strong> Replicate across <strong>OCA</strong> &amp; <strong>FISU</strong>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card"
+                data-explain="4 Commercial Monetization Pillars"
+                data-category="HOW BORNAN MAKES MONEY"
+                data-why="Turns Bornan from a one-off tournament vendor into an always-on SaaS partner."
+                data-desc="Four distinct ways Bornan prices and monetizes this platform with PANAM Sports and future federations.">
+                <div class="card-header">
+                    <div class="card-title">Monetization Business Case (4 Revenue Streams)</div>
+                </div>
+                <div class="kpi-grid" style="margin-bottom:0;">
+                    <div class="kpi-card navy"
+                        data-explain="Revenue Pillar 1: Annual SaaS Vault & Custom BI"
+                        data-category="RECURRING REVENUE"
+                        data-why="Provides predictable year-round software revenue between Games."
+                        data-desc="PANAM pays an annual subscription based on active profile volume and NOC portal seats—with zero third-party BI seat fees cutting into Bornan's margin.">
+                        <div class="kpi-label">1. Annual SaaS Vault</div>
+                        <div class="kpi-val" style="font-size:1.25rem;">Recurring ARR</div>
+                        <div class="kpi-sub">Tiered by active records &amp; NOC seats</div>
+                    </div>
+                    <div class="kpi-card red"
+                        data-explain="Revenue Pillar 2: Sponsor Data & Activation Share"
+                        data-category="SELF-FUNDING MODEL"
+                        data-why="Helps PANAM pay for the platform using new sponsorship money."
+                        data-desc="Revenue-share on sponsor data packages or a commercial add-on fee whenever official sponsors activate opted-in audiences.">
+                        <div class="kpi-label">2. Sponsor Rev-Share</div>
+                        <div class="kpi-val" style="font-size:1.25rem;">Commercial %</div>
+                        <div class="kpi-sub">Funded out of new sponsor packages</div>
+                    </div>
+                    <div class="kpi-card green"
+                        data-explain="Revenue Pillar 3: Fast-Track Re-Accreditation"
+                        data-category="GMS RETENTION"
+                        data-why="Makes Bornan's core GMS tournament software even stickier."
+                        data-desc="Per-Games operational fee bundled into GMS renewals for Keycloak SSO pre-fill that cuts NOC accreditation time.">
+                        <div class="kpi-label">3. Fast-Track SSO</div>
+                        <div class="kpi-val" style="font-size:1.25rem;">Per-Games Fee</div>
+                        <div class="kpi-sub">Bundled in GMS renewal contracts</div>
+                    </div>
+                    <div class="kpi-card"
+                        data-explain="Revenue Pillar 4: Enterprise Dynamics 365 Connector"
+                        data-category="HYBRID UPSIDE"
+                        data-why="Monetizes even when a client chooses Microsoft as their main CRM."
+                        data-desc="Fixed setup fee plus annual API maintenance retainer to sync clean sports data into Microsoft Dynamics 365.">
+                        <div class="kpi-label">4. D365 Sync Adapter</div>
+                        <div class="kpi-val" style="font-size:1.25rem;">Setup + Retainer</div>
+                        <div class="kpi-sub">API &amp; custom reporting maintenance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Floating Beginner Tooltip Engine
+    const tooltip = document.getElementById('smart-tooltip');
+    const ttCategory = document.getElementById('tt-category');
+    const ttTitle = document.getElementById('tt-title');
+    const ttBody = document.getElementById('tt-body');
+    const ttWhy = document.getElementById('tt-why');
+
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest('[data-explain]');
+        if (!target) {
+            tooltip.classList.remove('visible');
+            return;
+        }
+        ttCategory.textContent = target.getAttribute('data-category') || 'ELEMENT GUIDE';
+        ttTitle.textContent = target.getAttribute('data-explain');
+        ttBody.textContent = target.getAttribute('data-desc') || '';
+        const whyText = target.getAttribute('data-why');
+        ttWhy.textContent = whyText ? '💡 Why it matters: ' + whyText : '';
+        ttWhy.style.display = whyText ? 'block' : 'none';
+        tooltip.classList.add('visible');
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!tooltip.classList.contains('visible')) return;
+        const pad = 16;
+        let x = e.clientX + pad;
+        let y = e.clientY + pad;
+        const rect = tooltip.getBoundingClientRect();
+        if (x + rect.width > window.innerWidth - 12) {
+            x = e.clientX - rect.width - pad;
+        }
+        if (y + rect.height > window.innerHeight - 12) {
+            y = e.clientY - rect.height - pad;
+        }
+        tooltip.style.left = Math.max(10, x) + 'px';
+        tooltip.style.top = Math.max(10, y) + 'px';
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        if (!e.relatedTarget || !e.relatedTarget.closest('[data-explain]')) {
+            tooltip.classList.remove('visible');
+        }
+    });
+
+    // Tab Switching
+    function switchTab(tabId, el) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+        el.classList.add('active');
+    }
+
+    // Interactive Cohort Recalculation
+    function recalcCohort() {
+        const region = document.getElementById('seg-region').value;
+        const sport = document.getElementById('seg-sport').value;
+        const role = document.getElementById('seg-role').value;
+
+        let base = 61420;
+        if (region === 'south') base = 34800;
+        if (region === 'north') base = 23440;
+
+        if (sport === 'aquatics') base = Math.round(base * 0.14);
+        if (sport === 'athletics') base = Math.round(base * 0.18);
+        if (sport === 'team') base = Math.round(base * 0.27);
+
+        if (role === 'athletes') base = Math.round(base * 0.58);
+        if (role === 'media') base = Math.round(base * 0.14);
+        if (role === 'officials') base = Math.round(base * 0.28);
+
+        document.getElementById('cohort-count').innerText = base.toLocaleString() + ' Profiles';
+    }
+
+    // Interactive Chart Edition Switcher
+    function updateChart(edition) {
+        const multiplier = edition === 'all' ? 1 : (edition === '2023' ? 0.44 : 0.39);
+        const baseNums = [11420, 10890, 9640, 9150, 8310, 67200];
+        const rows = document.querySelectorAll('#noc-bars .bar-row');
+        rows.forEach((row, idx) => {
+            const val = Math.round(baseNums[idx] * multiplier);
+            row.querySelector('.bar-num').innerText = val.toLocaleString();
+        });
+        notify('Updated BI chart for: ' + (edition === 'all' ? 'All Merged Editions' : 'PANAM ' + edition));
+    }
+
+
+    // Module E Interactive Simulator
+    function updateModuleE() {
+        const tenant = document.getElementById('e-tenant').value;
+        const lang = document.getElementById('e-lang').value;
+
+        const headlines = {
+            en: 'Post-Event CRM & Sponsor Cockpit',
+            es: 'CRM Post-Evento y Panel de Patrocinadores',
+            fr: 'CRM Post-Événement & Tableau Sponsors'
+        };
+
+        const tenantInfo = {
+            panam: {
+                tag: 'TENANT: PANAM SPORTS · REALM: panam-prod',
+                desc: '41 National Olympic Committees across the Americas · Isolated schema: tenant_panam',
+                records: '124,800',
+                seats: '41 NOCs + 6 Sponsors',
+                syncs: '14,280 events/mo'
+            },
+            oca: {
+                tag: 'TENANT: OLYMPIC COUNCIL OF ASIA · REALM: oca-prod',
+                desc: '45 Asian NOCs multi-edition readiness · Isolated schema: tenant_oca',
+                records: '168,400',
+                seats: '45 NOCs + 8 Sponsors',
+                syncs: '21,950 events/mo'
+            },
+            fisu: {
+                tag: 'TENANT: FISU UNIVERSITY SPORTS · REALM: fisu-prod',
+                desc: 'Global university sports federations & alumni · Isolated schema: tenant_fisu',
+                records: '94,250',
+                seats: '110 Federations + 4 Partners',
+                syncs: '9,640 events/mo'
+            }
+        };
+
+        const info = tenantInfo[tenant];
+        document.getElementById('e-preview-tag').innerText = info.tag + ' · LANG: ' + lang.toUpperCase();
+        document.getElementById('e-preview-headline').innerText = headlines[lang];
+        document.getElementById('e-preview-desc').innerText = info.desc;
+        document.getElementById('e-meter-records').innerText = info.records;
+        document.getElementById('e-meter-seats').innerText = info.seats;
+        document.getElementById('e-meter-syncs').innerText = info.syncs;
+    }
+
+    // Toast Notification
+    function notify(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.style.display = 'block';
+        clearTimeout(window._toastTimer);
+        window._toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3500);
+    }
+
+    // Interactive Regional Map Hub Switcher
+    function selectRegionHub(regionKey, btnEl) {
+        const data = {
+            all: {
+                badge: '41 NOCs · Live Telemetry',
+                tag: 'CONTINENTAL OVERVIEW · 41 NOCs',
+                title: 'All Pan Am Regions',
+                profiles: '124,800',
+                optin: '68.0%',
+                returnRate: '34.2%',
+                sponsor: '84.8k Reach',
+                summary: 'Full continental footprint across North America, Central America & Caribbean, and South America with zero raw passport storage.'
+            },
+            north: {
+                badge: '3 NOCs · North Hub',
+                tag: 'NORTH AMERICA · USA, CAN, MEX',
+                title: 'North Hub (3 NOCs)',
+                profiles: '34,470',
+                optin: '71.4%',
+                returnRate: '38.6%',
+                sponsor: '24.6k Reach',
+                summary: 'High-value North American cohort led by USA and Mexico with strong multi-edition athlete and broadcast media retention.'
+            },
+            carib: {
+                badge: '26 NOCs · Central & Carib',
+                tag: 'CENTRAL AMERICA & CARIBBEAN · 26 NOCs',
+                title: 'Carib & CA Hub (26 NOCs)',
+                profiles: '33,290',
+                optin: '66.2%',
+                returnRate: '31.5%',
+                sponsor: '22.0k Reach',
+                summary: 'Broad regional federation reach across 26 NOCs ideal for regional travel, telecom, and consumer brand activations.'
+            },
+            south: {
+                badge: '12 NOCs · South America',
+                tag: 'SOUTH AMERICA · BRA, CHI, COL, ARG & 8 MORE',
+                title: 'South America Hub (12 NOCs)',
+                profiles: '57,040',
+                optin: '67.1%',
+                returnRate: '33.8%',
+                sponsor: '38.2k Reach',
+                summary: 'Largest regional pool driven by Brazil, Chile, Colombia, and Argentina with high multi-Games athlete-to-coach progression.'
+            }
+        };
+
+        const item = data[regionKey] || data.all;
+        document.getElementById('map-active-badge').textContent = item.badge;
+        document.getElementById('reg-tag').textContent = item.tag;
+        document.getElementById('reg-title').textContent = item.title;
+        document.getElementById('reg-profiles').textContent = item.profiles;
+        document.getElementById('reg-optin').textContent = item.optin;
+        document.getElementById('reg-return').textContent = item.returnRate;
+        document.getElementById('reg-sponsor').textContent = item.sponsor;
+        document.getElementById('reg-summary').textContent = item.summary;
+
+        document.querySelectorAll('[data-region-btn]').forEach(b => {
+            b.classList.toggle('active', b.getAttribute('data-region-btn') === regionKey);
+        });
+
+        // Also sync the cohort builder region filter if applicable
+        const segRegion = document.getElementById('seg-region');
+        if (segRegion) {
+            if (regionKey === 'north') segRegion.value = 'north';
+            else if (regionKey === 'south') segRegion.value = 'south';
+            else segRegion.value = 'latam';
+            recalcCohort();
+        }
+    }
+
+</script>
+
+</body>
+</html>
